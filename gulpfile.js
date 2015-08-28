@@ -5,6 +5,7 @@ var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 var gutil = require('gulp-util');
+var imagemin = require('gulp-imagemin');
 
 /**
  * convert scss file to css file
@@ -63,8 +64,18 @@ gulp.task('uglify', ['concat'], function() {
         .pipe(gulp.dest(__dirname + '/dist/js/'));
 });
 
+gulp.task('imageminify', function() {
+
+    return gulp.src(__dirname + '/image/*.*')
+        .pipe(imagemin({
+            progressive: true,
+            optimizationLevel: 1
+        }))
+        .pipe(gulp.dest(__dirname + '/image/min/'));
+});
+
 
 /**
  * Run gulp task
  */
-gulp.task('default', ['compass', 'minify', 'uglify']);
+gulp.task('default', ['compass', 'minify', 'uglify', 'imageminify']);
