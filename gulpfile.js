@@ -6,7 +6,7 @@ var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 var gutil = require('gulp-util');
 var imagemin = require('gulp-imagemin');
-// var bower = require('gulp-bower');
+var bower = require('gulp-bower');
 
 /**
  * convert scss file to css file
@@ -75,14 +75,13 @@ gulp.task('imageminify', function() {
         .pipe(gulp.dest(__dirname + '/image/min/'));
 });
 
-// gulp.task('bower', function() {
+gulp.task('bower', function() {
 
-//     return bower()
-//     .pipe(gulp.dest(__dirname + '/lib'));
-// });
+    return bower({cmd: 'install'});
+});
 
 
 /**
  * Run gulp task
  */
-gulp.task('default', ['compass', 'minify', 'uglify', 'imageminify', ]);
+gulp.task('default', ['compass', 'minify', 'uglify', 'imageminify', 'bower']);
