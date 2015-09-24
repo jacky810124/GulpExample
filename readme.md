@@ -32,3 +32,4 @@ gulp.watch('project/css/*.css', ['minify']);
 - gulp-rename : 重新命名
 - gulp-uglify ： 壓縮javascript
 - gulp-util : 可以印出詳細的gulp錯誤訊息
+- gulp-nodemon：gulp + nodemon
